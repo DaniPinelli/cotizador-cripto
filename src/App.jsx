@@ -20,6 +20,7 @@ margin: 100px auto 0 auto;
 display: block;
 @media (max-width: 992px) {
   max-width: 200px;
+  margin-top: 40px; 
 }
 `
 
