@@ -1,17 +1,37 @@
-import React from 'react'
+import { useState } from 'react'
 import styled from '@emotion/styled'
 
 const Label = styled.label`
 color:#fff;
+display:block;
+font-family: 'Lato', sans-serif;
+font-size:24px;
+font-weight:700;
+margin:15px 0;
+border-radious:10px
+`
+
+const Select = styled.select`
+width: 70%;
+font-size:18px;
+padding:12px;
+border-radius: 10px;
+border:none;
 `
 
 const useSelectMonedas = (label, opciones) => {
+
+
+    const [state, setState] = useState('')
 
     const SelectMonedas = () => (
 
         <>
             <Label>{label}</Label>
-            <select>
+            <Select
+                value={state}
+                onChange={e => setState(e.target.value)}
+            >
                 <option value="" >Seleccionar</option>
 
                 {opciones.map(opcion => (
@@ -20,11 +40,11 @@ const useSelectMonedas = (label, opciones) => {
                         value={opcion.id}
                     >{opcion.nombre}</option>
                 ))}
-            </select>
+            </Select>
         </>
     )
 
-    return [SelectMonedas]
+    return [state, SelectMonedas]
 }
 
 export default useSelectMonedas
